@@ -9,4 +9,3 @@ ADD ldap_bind_dn.conf $GOGS_CUSTOM/conf/auth.d/ldap_bind_dn.conf
 ADD hyperdev.sh /app/gogs/docker/hyperdev.sh
 
 ENTRYPOINT ["/app/gogs/docker/hyperdev.sh"]
-CMD ["/bin/s6-svscan", "/app/gogs/docker/s6/"]
