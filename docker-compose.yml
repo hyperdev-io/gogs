@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  www:
+    build: .
+    environment:
+      RUN_CROND: "true"
+      GOGS_LDAP_HOST: openldap
+      GOGS_LDAP_PORT: 389
+      GOGS_LDAP_USER_BASE: dc=test,dc=hyperdev,dc=cloud
+      GOGS_LDAP_BIND_DN: cn=readonly,dc=test,dc=hyperdev,dc=cloud
+      GOGS_LDAP_BIND_PASSWORD: passwr0rd!
+    ports:
+      - "3000:3000"
+  db:
+    image: postgres:10
+    environment:
+      POSTGRES_USER: gogs
+      POSTGRES_PASSWORD: gogs
+
+  openldap:
+    image: osixia/openldap:1.1.10
+    environment:
+      - LDAP_ORGANISATION=test
+      - LDAP_DOMAIN=test.hyperdev.cloud
+      - LDAP_BASE_DN=dc=test,dc=hyperdev,dc=cloud
+      - LDAP_ADMIN_PASSWORD=admin
+      - LDAP_READONLY_USER=true
+      - LDAP_READONLY_USER_USERNAME=readonly
+      - LDAP_READONLY_USER_PASSWORD=passwr0rd!
+    command: --copy-service
+
+  phpldapadmin:
+    image: osixia/phpldapadmin:0.7.1
+    depends_on:
+      - openldap
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=openldap
+    ports:
+      - "8000:443"
