@@ -1,8 +1,8 @@
-FROM gogs/gogs:0.11.43
+FROM gogs/gogs:0.11.79
 
 RUN apk --update --no-cache add gettext
 
-ENV GOGS_CUSTOM /app/gogs
+ENV GOGS_CUSTOM /app/gogs/custom
 
 ADD app.ini $GOGS_CUSTOM/conf/app.ini
 ADD ldap_bind_dn.conf $GOGS_CUSTOM/conf/auth.d/ldap_bind_dn.conf
