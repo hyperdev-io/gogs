@@ -7,6 +7,11 @@ GOGS image for Hyperdev.io, configurable via env vars
 - GOGS_LDAP_BIND_DN
 - GOGS_LDAP_BIND_PASSWORD
 - GOGS_LDAP_USER_BASE
+- GOGS_POSTGRES_HOST
+- GOGS_POSTGRES_PORT
+- GOGS_POSTGRES_DB_NAME
+- GOGS_POSTGRES_USER
+- GOGS_POSTGRES_PASSWORD
 
 ## Volumes that need to be persisted
 - /data
