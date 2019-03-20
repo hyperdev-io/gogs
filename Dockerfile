@@ -1,4 +1,4 @@
-FROM gogs/gogs:0.11.79
+FROM gogs/gogs:0.11.86
 
 RUN apk --update --no-cache add gettext
 
