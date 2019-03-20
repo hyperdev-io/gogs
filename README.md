@@ -12,6 +12,7 @@ GOGS image for Hyperdev.io, configurable via env vars
 - GOGS_POSTGRES_DB_NAME
 - GOGS_POSTGRES_USER
 - GOGS_POSTGRES_PASSWORD
+- GOGS_DOMAIN
 
 ## Volumes that need to be persisted
 - /data
