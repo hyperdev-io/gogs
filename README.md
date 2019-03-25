@@ -16,7 +16,6 @@ GOGS image for Hyperdev.io, configurable via env vars
 
 ## Volumes that need to be persisted
 - /data
-- /app/gogs/conf
 
 ## To configure Jenkins <-> Gogs integration
 - Add Gogs plugin to Jenkins and restart Jenkins
