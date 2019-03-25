@@ -12,11 +12,16 @@ services:
       GOGS_DOMAIN: gogs.test.hyperdev.cloud
     ports:
       - "3000:3000"
+    volumes:
+      - ./data/gogs:/data
+
   db:
-    image: postgres:10
+    image: postgres:11-alpine
     environment:
       POSTGRES_USER: gogs
       POSTGRES_PASSWORD: gogs
+    volumes:
+      - data:/var/lib/postgresql/data
 
   openldap:
     image: osixia/openldap:1.1.10
@@ -27,6 +32,8 @@ services:
       - LDAP_ADMIN_PASSWORD=admin
       - LDAP_READONLY_USER=true
     command: --copy-service
+    volumes:
+      - ./users.ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom/50-bootstrap.ldif
 
   phpldapadmin:
     image: osixia/phpldapadmin:0.7.1
@@ -36,3 +43,6 @@ services:
       - PHPLDAPADMIN_LDAP_HOSTS=openldap
     ports:
       - "8000:443"
+
+volumes:
+  data: {}
