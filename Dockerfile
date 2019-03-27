@@ -10,6 +10,7 @@ ENV GOGS_POSTGRES_DB_NAME gogs
 ENV GOGS_POSTGRES_USER gogs
 ENV GOGS_POSTGRES_PASSWORD gogs
 ENV GOGS_DOMAIN gogs.test.dashboard.hyperdev.cloud
+ENV GOGS_HTTP_PORT 3000
 
 ADD app.ini $GOGS_CUSTOM/conf/app.ini.orig
 ADD ldap_bind_dn.conf $GOGS_CUSTOM/conf/auth.d/ldap_bind_dn.conf.orig
