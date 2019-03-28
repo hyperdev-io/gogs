@@ -3,22 +3,31 @@ GOGS image for Hyperdev.io, configurable via env vars
 
 ## Available env vars
 For gogs itself:
-- GOGS_DOMAIN `gogs.test.dashboard.hyperdev.cloud`: you should set this to `"${HYPERDEV}"`
-- GOGS_HTTP_PORT `3000`: port gogs will listen on within the container, also used for http git clone url
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| GOGS_DOMAIN | `gogs.test.dashboard.hyperdev.cloud` | you should set this to `"${HYPERDEV_SERVICE_NAME}.${HYPERDEV_INSTANCE_NAME}.${HYPERDEV_PROJECT}.hyperdev.cloud"` |
+| GOGS_HTTP_PORT | `3000` | port gogs will listen on within the container, also used for http git clone url |
 
 For gogs' connection to the postgres DB
-- GOGS_POSTGRES_HOST `db`
-- GOGS_POSTGRES_PORT `5432`
-- GOGS_POSTGRES_DB_NAME `gogs`
-- GOGS_POSTGRES_USER `gogs`
-- GOGS_POSTGRES_PASSWORD `gogs`
+
+| Variable | Default |
+|----------|---------|
+| GOGS_POSTGRES_HOST | `db` |
+| GOGS_POSTGRES_PORT | `5432` |
+| GOGS_POSTGRES_DB_NAME | `gogs` |
+| GOGS_POSTGRES_USER | `gogs` |
+| GOGS_POSTGRES_PASSWORD | `gogs` |
 
 For gogs' connection to LDAP
-- GOGS_LDAP_HOST: set this to `"ldap.${HYPERDEV_PROJECT}.hyperdev.cloud"`
-- GOGS_LDAP_PORT `389`: you shoudn't need to changes this
-- GOGS_LDAP_BIND_DN: set this to `"cn=readonly,dc=${HYPERDEV_PROJECT},dc=hyperdev,dc=cloud"`
-- GOGS_LDAP_BIND_PASSWORD `"readonly"`: you shouldn't need to change this.
-- GOGS_LDAP_USER_BASE: you should set this to `"dc=${HYPERDEV_PROJECT},dc=hyperdev,dc=cloud"`
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| GOGS_LDAP_HOST | None | set this to `"ldap.${HYPERDEV_PROJECT}.hyperdev.cloud"` |
+| GOGS_LDAP_PORT | `389` | you shoudn't need to changes this |
+| GOGS_LDAP_BIND_DN | None | set this to `"cn=readonly,dc=${HYPERDEV_PROJECT},dc=hyperdev,dc=cloud"` |
+| GOGS_LDAP_BIND_PASSWORD | `"readonly"` | you shouldn't need to change this. |
+| GOGS_LDAP_USER_BASE | None | you should set this to `"dc=${HYPERDEV_PROJECT},dc=hyperdev,dc=cloud"` |
 
 ## Volumes that need to be persisted
 - /data
