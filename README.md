@@ -6,7 +6,7 @@ For gogs itself:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| GOGS_DOMAIN | `gogs.test.dashboard.hyperdev.cloud` | you should set this to `"${HYPERDEV_SERVICE_NAME}.${HYPERDEV_INSTANCE_NAME}.${HYPERDEV_PROJECT}.hyperdev.cloud"` |
+| GOGS_DOMAIN | `gogs.test.dashboard.hyperdev.cloud` | you should set this to `"${HYPERDEV_SERVICE_NAME}.${HYPERDEV_INSTANCE_NAME}.${HYPERDEV_DOMAIN}.hyperdev.cloud"` |
 | GOGS_HTTP_PORT | `3000` | port gogs will listen on within the container, also used for http git clone url |
 
 For gogs' connection to the postgres DB
@@ -23,11 +23,11 @@ For gogs' connection to LDAP
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| GOGS_LDAP_HOST | None | set this to `"ldap.${HYPERDEV_PROJECT}.hyperdev.cloud"` |
+| GOGS_LDAP_HOST | None | set this to `"ldap.${HYPERDEV_DOMAIN}.hyperdev.cloud"` |
 | GOGS_LDAP_PORT | `389` | you shoudn't need to changes this |
-| GOGS_LDAP_BIND_DN | None | set this to `"cn=readonly,dc=${HYPERDEV_PROJECT},dc=hyperdev,dc=cloud"` |
+| GOGS_LDAP_BIND_DN | None | set this to `"cn=readonly,dc=${HYPERDEV_DOMAIN},dc=hyperdev,dc=cloud"` |
 | GOGS_LDAP_BIND_PASSWORD | `"readonly"` | you shouldn't need to change this. |
-| GOGS_LDAP_USER_BASE | None | you should set this to `"dc=${HYPERDEV_PROJECT},dc=hyperdev,dc=cloud"` |
+| GOGS_LDAP_USER_BASE | None | you should set this to `"dc=${HYPERDEV_DOMAIN},dc=hyperdev,dc=cloud"` |
 
 ## Volumes that need to be persisted
 - /data
